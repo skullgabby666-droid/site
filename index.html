@@ -561,65 +561,99 @@
 <section class="min-h-screen flex items-center justify-center px-6 py-20 relative fade-section">
   <div class="max-w-2xl mx-auto w-full">
     <h2 id="slideshow-heading" class="grunge-title romantic-title text-3xl md:text-4xl mb-4 text-center" style="color: var(--primary-color);">♡ Through My Eyes ♡</h2>
-    <p id="slideshow-subtitle" class="handwritten text-lg md:text-xl text-center mb-12 opacity-80" style="color: var(--text-color);">Every moment with you is a treasure I want to hold forever</p>
+    <p id="slideshow-subtitle" class="handwritten text-lg md:text-xl text-center mb-12 opacity-80" style="color: var(--text-color);">
+      Every moment with you is a treasure I want to hold forever
+    </p>
+
     <!-- Slideshow Container -->
     <div class="relative">
-      <div class="relative rounded-lg overflow-hidden romantic-border" style="width: 100%; height: 600px; position: relative;">
+      <div class="relative rounded-lg overflow-hidden romantic-border" style="width: 100%; height: 80vh; position: relative;">
         <div id="slideshow-container" style="position: relative; width: 100%; height: 100%;">
-          <!-- Slide 1 -->
-          <div class="slideshow-slide" data-slide="0" style="position: absolute; width: 100%; height: 100%; opacity: 1; transition: opacity 0.8s ease-in-out;">
+
+          <!-- Slide 1 - Image -->
+          <div class="slideshow-slide" data-slide="0" style="position:absolute;width:100%;height:100%;opacity:1;transition:opacity 0.8s ease-in-out;">
             <img src="pic1.jpg" alt="pic1" style="width:100%;height:100%;object-fit:contain;object-position:center;border-radius:8px;">
           </div>
-          <!-- Slide 2 -->
+
+          <!-- Slide 2 - Video -->
           <div class="slideshow-slide" data-slide="1" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
             <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
               <source src="vid2.mp4" type="video/mp4">
             </video>
           </div>
-          <!-- Slide 3 -->
-          <div class="slideshow-slide" data-slide="2" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out;">
+
+          <!-- Slide 3 - Image -->
+          <div class="slideshow-slide" data-slide="2" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
             <img src="pic3.jpg" alt="pic3" style="width:100%;height:100%;object-fit:contain;object-position:center;border-radius:8px;">
           </div>
-          <!-- Slide 4 -->
+
+          <!-- Slide 4 - Video -->
           <div class="slideshow-slide" data-slide="3" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
             <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
               <source src="vid4.mp4" type="video/mp4">
             </video>
           </div>
-          <!-- Slide 5 -->
+
+          <!-- Slide 5 - Video -->
           <div class="slideshow-slide" data-slide="4" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
             <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
               <source src="vid5.mp4" type="video/mp4">
             </video>
           </div>
-          <!-- Slide 6 -->
-          <div class="slideshow-slide" data-slide="5" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out;">
+
+          <!-- Slide 6 - Image -->
+          <div class="slideshow-slide" data-slide="5" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
             <img src="pic6.jpg" alt="pic6" style="width:100%;height:100%;object-fit:contain;object-position:center;border-radius:8px;">
           </div>
-          <!-- Slide 7 -->
-          <div class="slideshow-slide" data-slide="6" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out;">
+
+          <!-- Slide 7 - Image -->
+          <div class="slideshow-slide" data-slide="6" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
             <img src="pic7.jpg" alt="pic7" style="width:100%;height:100%;object-fit:contain;object-position:center;border-radius:8px;">
           </div>
-          <!-- Slide 8 -->
+
+          <!-- Slide 8 - Video -->
           <div class="slideshow-slide" data-slide="7" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
             <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
               <source src="vid8.mp4" type="video/mp4">
             </video>
           </div>
-          <!-- Slide 9 -->
-          <div class="slideshow-slide" data-slide="8" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out;">
+
+          <!-- Slide 9 - Image -->
+          <div class="slideshow-slide" data-slide="8" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
             <img src="pic9.jpg" alt="pic9" style="width:100%;height:100%;object-fit:contain;object-position:center;border-radius:8px;">
           </div>
-          <!-- Slide 10 -->
-          <div class="slideshow-slide" data-slide="9" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out;">
+
+          <!-- Slide 10 - Image -->
+          <div class="slideshow-slide" data-slide="9" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
             <img src="pic10.jpg" alt="pic10" style="width:100%;height:100%;object-fit:contain;object-position:center;border-radius:8px;">
           </div>
+
         </div>
+
         <!-- Floating Hearts -->
         <div style="position: absolute; top: -20px; left: 20%; font-size: 1.5rem; animation: floatingHearts 3s ease-in infinite;">♡</div>
         <div style="position: absolute; top: -15px; right: 15%; font-size: 1.8rem; animation: floatingHearts 3s ease-in infinite; animation-delay: 0.5s;">♡</div>
         <div style="position: absolute; bottom: -20px; left: 15%; font-size: 1.6rem; animation: floatingHearts 3s ease-in infinite; animation-delay: 1s;">♡</div>
         <div style="position: absolute; bottom: -15px; right: 20%; font-size: 1.7rem; animation: floatingHearts 3s ease-in infinite; animation-delay: 1.5s;">♡</div>
+
+        <!-- Arrow Buttons -->
+        <button onclick="prevSlide()" class="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 transition-all duration-300 hover:scale-110 focus:outline-none" style="background: rgba(212, 165, 201, 0.8); border: 2px solid #d4a5c9; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.5rem; color: #0d0a12;" onmouseover="this.style.background='rgba(212, 165, 201, 1)'" onmouseout="this.style.background='rgba(212, 165, 201, 0.8)'"> ‹ </button>
+        <button onclick="nextSlide()" class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 transition-all duration-300 hover:scale-110 focus:outline-none" style="background: rgba(212, 165, 201, 0.8); border: 2px solid #d4a5c9; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.5rem; color: #0d0a12;" onmouseover="this.style.background='rgba(212, 165, 201, 1)'" onmouseout="this.style.background='rgba(212, 165, 201, 0.8)'"> › </button>
+
+      </div>
+
+      <!-- Dots Indicators -->
+      <div class="flex justify-center gap-3 mt-8 flex-wrap">
+        <button onclick="goToSlide(0)" class="dot-indicator" style="width:12px;height:12px;border-radius:50%;background:var(--primary-color);border:2px solid var(--primary-color);cursor:pointer;"></button>
+        <button onclick="goToSlide(1)" class="dot-indicator" style="width:12px;height:12px;border-radius:50%;background:transparent;border:2px solid var(--accent-color);cursor:pointer;"></button>
+        <button onclick="goToSlide(2)" class="dot-indicator" style="width:12px;height:12px;border-radius:50%;background:transparent;border:2px solid var(--accent-color);cursor:pointer;"></button>
+        <button onclick="goToSlide(3)" class="dot-indicator" style="width:12px;height:12px;border-radius:50%;background:transparent;border:2px solid var(--accent-color);cursor:pointer;"></button>
+        <button onclick="goToSlide(4)" class="dot-indicator" style="width:12px;height:12px;border-radius:50%;background:transparent;border:2px solid var(--accent-color);cursor:pointer;"></button>
+        <button onclick="goToSlide(5)" class="dot-indicator" style="width:12px;height:12px;border-radius:50%;background:transparent;border:2px solid var(--accent-color);cursor:pointer;"></button>
+        <button onclick="goToSlide(6)" class="dot-indicator" style="width:12px;height:12px;border-radius:50%;background:transparent;border:2px solid var(--accent-color);cursor:pointer;"></button>
+        <button onclick="goToSlide(7)" class="dot-indicator" style="width:12px;height:12px;border-radius:50%;background:transparent;border:2px solid var(--accent-color);cursor:pointer;"></button>
+        <button onclick="goToSlide(8)" class="dot-indicator" style="width:12px;height:12px;border-radius:50%;background:transparent;border:2px solid var(--accent-color);cursor:pointer;"></button>
+        <button onclick="goToSlide(9)" class="dot-indicator" style="width:12px;height:12px;border-radius:50%;background:transparent;border:2px solid var(--accent-color);cursor:pointer;"></button>
       </div>
     </div>
   </div>
@@ -1328,6 +1362,7 @@
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d93119da1b8ec1a',t:'MTc3Mjk4NTc5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
