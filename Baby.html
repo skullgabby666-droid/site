@@ -1,0 +1,1366 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Nissy</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Special+Elite&amp;family=Homemade+Apple&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    
+    :root {
+      --bg-color: #0d0a12;
+      --surface-color: #1a1520;
+      --text-color: #e8ddf0;
+      --primary-color: #d4a5c9;
+      --accent-color: #9b7bb8;
+    }
+    
+    body {
+      font-family: 'Playfair Display', serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+    
+    .grunge-title {
+      font-family: 'Special Elite', cursive;
+      text-shadow: 2px 2px 4px rgba(212, 165, 201, 0.3);
+    }
+    
+    .handwritten {
+      font-family: 'Homemade Apple', cursive;
+    }
+    
+    /* Floating butterflies */
+    .butterfly {
+      position: fixed;
+      font-size: 1.5rem;
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 100;
+      animation: flutter 8s ease-in-out infinite;
+    }
+    
+    .butterfly:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+    .butterfly:nth-child(2) { top: 30%; right: 10%; animation-delay: 2s; }
+    .butterfly:nth-child(3) { top: 60%; left: 15%; animation-delay: 4s; }
+    .butterfly:nth-child(4) { top: 80%; right: 20%; animation-delay: 1s; }
+    .butterfly:nth-child(5) { top: 45%; left: 80%; animation-delay: 3s; }
+    
+    @keyframes flutter {
+      0%, 100% { 
+        transform: translateY(0) translateX(0) rotate(0deg); 
+        opacity: 0.4;
+      }
+      25% { 
+        transform: translateY(-30px) translateX(20px) rotate(10deg); 
+        opacity: 0.7;
+      }
+      50% { 
+        transform: translateY(-10px) translateX(-15px) rotate(-5deg); 
+        opacity: 0.5;
+      }
+      75% { 
+        transform: translateY(-40px) translateX(10px) rotate(8deg); 
+        opacity: 0.6;
+      }
+    }
+    
+    /* Sparkles */
+    .sparkle {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 50;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+    
+    /* Floating flowers */
+    .flower {
+      position: fixed;
+      font-size: 1.2rem;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 40;
+      animation: floatFlower 12s ease-in-out infinite;
+    }
+    
+    @keyframes floatFlower {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      33% { transform: translateY(-20px) rotate(120deg); }
+      66% { transform: translateY(10px) rotate(240deg); }
+    }
+    
+    /* Section animations */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease-out;
+    }
+    
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Gradient overlays */
+    .gradient-overlay {
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(155, 123, 184, 0.1) 50%,
+        transparent 100%
+      );
+    }
+    
+    /* Glowing text */
+    .glow-text {
+      text-shadow: 
+        0 0 10px var(--primary-color),
+        0 0 20px var(--primary-color),
+        0 0 30px var(--accent-color);
+    }
+    
+    /* Vinyl record animation */
+    .vinyl {
+      animation: spin 8s linear infinite;
+      animation-play-state: paused;
+    }
+    
+    .vinyl.playing {
+      animation-play-state: running;
+    }
+    
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Cassette tape */
+    .tape-reel {
+      animation: reelSpin 2s linear infinite;
+      animation-play-state: paused;
+    }
+    
+    .tape-reel.playing {
+      animation-play-state: running;
+    }
+    
+    @keyframes reelSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Dreamy blur effect */
+    .dreamy-blur {
+      filter: blur(100px);
+      opacity: 0.3;
+    }
+    
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg-color);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 4px;
+    }
+    
+    /* Heart pulse */
+    .heart-pulse {
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.15); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.1); }
+    }
+    
+    /* Floating heart animation */
+    .floating-heart {
+      animation: floatingHearts 3s ease-in infinite;
+    }
+    
+    @keyframes floatingHearts {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-80px) scale(0.5);
+        opacity: 0;
+      }
+    }
+    
+    /* Heart burst animation */
+    .heart-burst {
+      animation: burstHearts 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    
+    @keyframes burstHearts {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: var(--tx) var(--ty) scale(0);
+        opacity: 0;
+      }
+    }
+    
+    /* Romantic section title animation */
+    .romantic-title {
+      animation: romanticGlow 2s ease-in-out infinite;
+    }
+    
+    @keyframes romanticGlow {
+      0%, 100% {
+        text-shadow: 
+          0 0 10px var(--primary-color),
+          0 0 20px var(--primary-color);
+      }
+      50% {
+        text-shadow: 
+          0 0 20px var(--primary-color),
+          0 0 30px var(--accent-color),
+          0 0 40px var(--primary-color);
+      }
+    }
+    
+    /* Section divider with hearts */
+    .heart-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .heart-divider .heart {
+      animation: heartbeat 1.5s ease-in-out infinite;
+      font-size: 1.5rem;
+    }
+    
+    .heart-divider .heart:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+    
+    .heart-divider .heart:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+    
+    /* Star twinkle */
+    .star {
+      animation: twinkle 2s ease-in-out infinite;
+    }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    
+    /* Fade in stagger */
+    .stagger-1 { animation-delay: 0.2s; }
+    .stagger-2 { animation-delay: 0.4s; }
+    .stagger-3 { animation-delay: 0.6s; }
+    .stagger-4 { animation-delay: 0.8s; }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeInUp 1s ease-out forwards;
+      opacity: 0;
+    }
+    
+    /* Romantic border */
+    .romantic-border {
+      border: 1px solid var(--accent-color);
+      box-shadow: 
+        0 0 15px rgba(155, 123, 184, 0.2),
+        inset 0 0 15px rgba(155, 123, 184, 0.1);
+    }
+    
+    /* Floating love message animation */
+    @keyframes floatUpAndFade {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--randomX), calc(-100px + var(--randomY))) scale(0.8);
+      }
+    }
+    
+    /* Big heart explosion burst outward */
+    .explosion-heart {
+      animation: explodeBurst 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+    }
+    
+    @keyframes explodeBurst {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      85% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(calc(-50% + var(--burst-x)), calc(-50% + var(--burst-y))) scale(0);
+        opacity: 0;
+      }
+    }
+    
+    /* Small hearts rain down from top */
+    .rain-heart {
+      animation: rainHearts 3.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+    }
+    
+    @keyframes rainHearts {
+      0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(var(--rain-x)) scale(0.3);
+        opacity: 0;
+      }
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full"><!-- Heart Burst Container (for all animations) -->
+  <div id="heart-burst-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 10000;"></div><!-- Floating Elements -->
+  <div class="butterfly">
+   🦋
+  </div>
+  <div class="butterfly">
+   🦋
+  </div>
+  <div class="butterfly">
+   🦋
+  </div>
+  <div class="butterfly">
+   🦋
+  </div>
+  <div class="butterfly">
+   🦋
+  </div>
+  <div class="flower" style="top: 20%; left: 8%;">
+   🌸
+  </div>
+  <div class="flower" style="top: 50%; right: 5%; animation-delay: 2s;">
+   💮
+  </div>
+  <div class="flower" style="top: 70%; left: 3%; animation-delay: 4s;">
+   🌺
+  </div>
+  <div class="flower" style="top: 35%; right: 12%; animation-delay: 6s;">
+   🌷
+  </div>
+  <div class="sparkle" style="top: 15%; left: 20%;"></div>
+  <div class="sparkle" style="top: 25%; right: 25%; animation-delay: 0.5s;"></div>
+  <div class="sparkle" style="top: 45%; left: 30%; animation-delay: 1s;"></div>
+  <div class="sparkle" style="top: 55%; right: 35%; animation-delay: 1.5s;"></div>
+  <div class="sparkle" style="top: 75%; left: 25%; animation-delay: 2s;"></div>
+  <div class="sparkle" style="top: 85%; right: 15%; animation-delay: 2.5s;"></div><!-- Background Gradient Blobs -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+   <div class="dreamy-blur absolute w-96 h-96 rounded-full" style="background: #d4a5c9; top: -10%; left: -10%;"></div>
+   <div class="dreamy-blur absolute w-80 h-80 rounded-full" style="background: #9b7bb8; top: 30%; right: -15%;"></div>
+   <div class="dreamy-blur absolute w-72 h-72 rounded-full" style="background: #7b5e99; bottom: 10%; left: 20%;"></div>
+  </div><!-- Main Content -->
+  <div id="main-wrapper" class="relative z-10 w-full overflow-auto h-full"><!-- Hero Section -->
+   <section class="min-h-screen flex flex-col items-center justify-center px-6 text-center relative">
+    <div class="absolute inset-0 gradient-overlay"></div>
+    <div class="relative z-10">
+     <p class="handwritten text-xl md:text-2xl mb-4 animate-fade-in stagger-1" style="color: var(--primary-color);">✧ Happy Women's Day ✧</p>
+     <h1 id="hero-title" class="grunge-title text-5xl md:text-7xl lg:text-8xl mb-6 glow-text animate-fade-in stagger-2" style="color: var(--text-color);">You Are My Everything, Nissy</h1>
+     <p id="hero-subtitle" class="text-xl md:text-2xl italic opacity-80 max-w-2xl mx-auto animate-fade-in stagger-3" style="color: var(--text-color);">I love you, only you, forever, no matter what ♡</p>
+     <div class="mt-12 animate-fade-in stagger-4 space-x-2"><span class="heart-pulse inline-block text-4xl" style="color: var(--primary-color);">♡</span> <span class="star inline-block text-3xl" style="color: var(--accent-color); animation-delay: 0.2s;">✦</span> <span class="heart-pulse inline-block text-4xl" style="color: var(--primary-color); animation-delay: 0.15s;">♡</span>
+     </div>
+     <div class="mt-16 animate-bounce opacity-50">
+      <svg class="w-6 h-6 mx-auto" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+     </div>
+    </div>
+   </section><!-- Quote Section -->
+   <section class="min-h-screen flex items-center justify-center px-6 py-20 relative fade-section">
+    <div class="max-w-3xl mx-auto text-center">
+     <div class="romantic-border p-8 md:p-12 rounded-lg relative" style="background: rgba(26, 21, 32, 0.8);"><span class="absolute -top-4 left-1/2 transform -translate-x-1/2 text-3xl">🌙</span>
+      <blockquote id="quote-text" class="text-2xl md:text-3xl italic leading-relaxed" style="color: var(--text-color);">
+       "I want to hold the hand inside you, I want to take a breath that's true"
+      </blockquote>
+      <div class="mt-8 flex items-center justify-center gap-4"><span class="star text-lg" style="color: var(--accent-color);">✦</span> <span class="handwritten text-lg" style="color: var(--primary-color);">— Mazzy Star</span> <span class="star text-lg" style="animation-delay: 1s; color: var(--accent-color);">✦</span>
+      </div>
+     </div>
+    </div>
+   </section><!-- Vinyl Record Section -->
+   <section class="min-h-screen flex items-center justify-center px-6 py-20 relative fade-section">
+    <div class="text-center">
+     <h2 class="grunge-title text-3xl md:text-4xl mb-12" style="color: var(--primary-color);">♪ Now Playing ♪</h2>
+     <div class="relative inline-block cursor-pointer" onclick="toggleVinyl()">
+      <svg id="vinyl-record" class="vinyl w-64 h-64 md:w-80 md:h-80" viewbox="0 0 200 200"><defs>
+        <radialgradient id="vinyl-gradient" cx="50%" cy="50%" r="50%">
+         <stop offset="0%" style="stop-color:#1a1520" />
+         <stop offset="45%" style="stop-color:#0d0a12" />
+         <stop offset="46%" style="stop-color:#1a1a1a" />
+         <stop offset="100%" style="stop-color:#0a0a0a" />
+        </radialgradient>
+       </defs> <circle cx="100" cy="100" r="95" fill="url(#vinyl-gradient)" stroke="#9b7bb8" stroke-width="1" /> <circle cx="100" cy="100" r="85" fill="none" stroke="#2a2a2a" stroke-width="0.5" /> <circle cx="100" cy="100" r="75" fill="none" stroke="#2a2a2a" stroke-width="0.5" /> <circle cx="100" cy="100" r="65" fill="none" stroke="#2a2a2a" stroke-width="0.5" /> <circle cx="100" cy="100" r="55" fill="none" stroke="#2a2a2a" stroke-width="0.5" /> <circle cx="100" cy="100" r="45" fill="none" stroke="#2a2a2a" stroke-width="0.5" /> <circle cx="100" cy="100" r="30" fill="#d4a5c9" /> <circle cx="100" cy="100" r="25" fill="#1a1520" /> <circle cx="100" cy="100" r="5" fill="#9b7bb8" /> <text x="100" y="95" text-anchor="middle" fill="#d4a5c9" font-size="6" font-family="Special Elite">
+        VELVET
+       </text> <text x="100" y="105" text-anchor="middle" fill="#d4a5c9" font-size="5" font-family="Special Elite">
+        DREAMS
+       </text>
+      </svg>
+      <p id="play-text" class="mt-6 text-lg opacity-70" style="color: var(--text-color);">click to play</p>
+     </div>
+     <div class="mt-12 space-y-4">
+      <p class="grunge-title text-xl" style="color: var(--text-color);">Fade Into You</p>
+      <p class="italic opacity-60" style="color: var(--accent-color);">So What You See</p>
+     </div>
+    </div>
+   </section><!-- Playlist Section -->
+   <section class="min-h-screen flex items-center justify-center px-6 py-20 relative fade-section">
+    <div class="max-w-2xl mx-auto w-full">
+     <h2 class="grunge-title text-3xl md:text-4xl mb-12 text-center" style="color: var(--primary-color);">✧ Dreamscape Playlist ✧</h2>
+     <div class="space-y-4">
+      <div class="romantic-border p-4 rounded-lg flex items-center gap-4 transition-all duration-300 hover:scale-102 cursor-pointer" style="background: rgba(26, 21, 32, 0.6);" onmouseover="this.style.background='rgba(155, 123, 184, 0.2)'" onmouseout="this.style.background='rgba(26, 21, 32, 0.6)'"><span class="text-2xl">🌙</span>
+       <div class="flex-1">
+        <p class="font-semibold" style="color: var(--text-color);">Brooklyn Baby</p>
+        <p class="text-sm opacity-60" style="color: var(--accent-color);">Lana Del Rey</p>
+       </div><span style="color: var(--primary-color);">♡</span>
+      </div>
+      <div class="romantic-border p-4 rounded-lg flex items-center gap-4 transition-all duration-300 hover:scale-102 cursor-pointer" style="background: rgba(26, 21, 32, 0.6);" onmouseover="this.style.background='rgba(155, 123, 184, 0.2)'" onmouseout="this.style.background='rgba(26, 21, 32, 0.6)'"><span class="text-2xl">🦋</span>
+       <div class="flex-1">
+        <p class="font-semibold" style="color: var(--text-color);">Norman Fucking Rockwell</p>
+        <p class="text-sm opacity-60" style="color: var(--accent-color);">Lana Del Rey</p>
+       </div><span style="color: var(--primary-color);">♡</span>
+      </div>
+      <div class="romantic-border p-4 rounded-lg flex items-center gap-4 transition-all duration-300 hover:scale-102 cursor-pointer" style="background: rgba(26, 21, 32, 0.6);" onmouseover="this.style.background='rgba(155, 123, 184, 0.2)'" onmouseout="this.style.background='rgba(26, 21, 32, 0.6)'"><span class="text-2xl">🌸</span>
+       <div class="flex-1">
+        <p class="font-semibold" style="color: var(--text-color);">Hallelujah</p>
+        <p class="text-sm opacity-60" style="color: var(--accent-color);">Jeff Buckley</p>
+       </div><span style="color: var(--primary-color);">♡</span>
+      </div>
+      <div class="romantic-border p-4 rounded-lg flex items-center gap-4 transition-all duration-300 hover:scale-102 cursor-pointer" style="background: rgba(26, 21, 32, 0.6);" onmouseover="this.style.background='rgba(155, 123, 184, 0.2)'" onmouseout="this.style.background='rgba(26, 21, 32, 0.6)'"><span class="text-2xl">💜</span>
+       <div class="flex-1">
+        <p class="font-semibold" style="color: var(--text-color);">Fade Into You</p>
+        <p class="text-sm opacity-60" style="color: var(--accent-color);">Mazzy Star</p>
+       </div><span style="color: var(--primary-color);">♡</span>
+      </div>
+      <div class="romantic-border p-4 rounded-lg flex items-center gap-4 transition-all duration-300 hover:scale-102 cursor-pointer" style="background: rgba(26, 21, 32, 0.6);" onmouseover="this.style.background='rgba(155, 123, 184, 0.2)'" onmouseout="this.style.background='rgba(26, 21, 32, 0.6)'"><span class="text-2xl">🕌</span>
+       <div class="flex-1">
+        <p class="font-semibold" style="color: var(--text-color);">Halal</p>
+        <p class="text-sm opacity-60" style="color: var(--accent-color);">Mazzy Star</p>
+       </div><span style="color: var(--primary-color);">♡</span>
+      </div>
+     </div>
+    </div>
+   </section><!-- Cassette Section -->
+   <section class="min-h-screen flex items-center justify-center px-6 py-20 relative fade-section">
+    <div class="text-center">
+     <h2 class="grunge-title text-3xl md:text-4xl mb-12" style="color: var(--primary-color);">Mixed Tape For You</h2>
+     <div class="inline-block cursor-pointer" onclick="toggleTape()">
+      <svg id="cassette" class="w-72 md:w-96" viewbox="0 0 300 180"><defs>
+        <lineargradient id="tape-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+         <stop offset="0%" style="stop-color:#2a2030" />
+         <stop offset="100%" style="stop-color:#1a1520" />
+        </lineargradient>
+       </defs> <rect x="10" y="10" width="280" height="160" rx="10" fill="url(#tape-gradient)" stroke="#9b7bb8" stroke-width="2" /> <rect x="30" y="25" width="240" height="70" rx="5" fill="#d4a5c9" opacity="0.9" /> <text x="150" y="55" text-anchor="middle" fill="#1a1520" font-size="14" font-family="Special Elite">
+        VELVET DREAMS
+       </text> <text x="150" y="75" text-anchor="middle" fill="#1a1520" font-size="10" font-family="Homemade Apple">
+        for you ♡
+       </text> <circle cx="90" cy="125" r="25" fill="#0d0a12" stroke="#9b7bb8" stroke-width="1" /> <circle cx="210" cy="125" r="25" fill="#0d0a12" stroke="#9b7bb8" stroke-width="1" /> <g id="left-reel" class="tape-reel" style="transform-origin: 90px 125px;">
+        <circle cx="90" cy="125" r="10" fill="none" stroke="#d4a5c9" stroke-width="1" />
+        <line x1="90" y1="115" x2="90" y2="105" stroke="#d4a5c9" stroke-width="2" />
+        <line x1="80" y1="125" x2="70" y2="125" stroke="#d4a5c9" stroke-width="2" />
+        <line x1="100" y1="125" x2="110" y2="125" stroke="#d4a5c9" stroke-width="2" />
+       </g> <g id="right-reel" class="tape-reel" style="transform-origin: 210px 125px;">
+        <circle cx="210" cy="125" r="10" fill="none" stroke="#d4a5c9" stroke-width="1" />
+        <line x1="210" y1="115" x2="210" y2="105" stroke="#d4a5c9" stroke-width="2" />
+        <line x1="200" y1="125" x2="190" y2="125" stroke="#d4a5c9" stroke-width="2" />
+        <line x1="220" y1="125" x2="230" y2="125" stroke="#d4a5c9" stroke-width="2" />
+       </g> <rect x="115" y="110" width="70" height="30" rx="3" fill="#0d0a12" stroke="#9b7bb8" stroke-width="1" /> <path d="M115 125 Q100 125 90 125" stroke="#3a2a3a" stroke-width="3" fill="none" /> <path d="M185 125 Q200 125 210 125" stroke="#3a2a3a" stroke-width="3" fill="none" /> <circle cx="80" cy="160" r="8" fill="#0d0a12" /> <circle cx="150" cy="160" r="8" fill="#0d0a12" /> <circle cx="220" cy="160" r="8" fill="#0d0a12" />
+      </svg>
+      <p id="tape-text" class="mt-6 text-lg opacity-70" style="color: var(--text-color);">click to play</p>
+     </div>
+    </div>
+   </section><!-- ABOUT HER SECTION - EDIT YOUR TEXT HERE -->
+   <section class="min-h-screen flex items-center justify-center px-6 py-20 relative fade-section">
+    <div class="max-w-2xl mx-auto w-full text-center">
+     <h2 id="about-her-heading" class="grunge-title romantic-title text-3xl md:text-4xl mb-8" style="color: var(--primary-color);">✧ About Her ✧</h2>
+     <div class="heart-divider"><span class="heart" style="color: var(--primary-color);">♡</span> <span class="heart" style="color: var(--accent-color); font-size: 1rem;">✦</span> <span class="heart" style="color: var(--primary-color);">♡</span>
+     </div>
+     <div class="romantic-border p-8 md:p-12 rounded-lg" style="background: rgba(26, 21, 32, 0.8);"><!-- EDIT THIS TEXT - Write about Nissy here -->
+      <p id="about-her-text" class="handwritten text-lg md:text-xl leading-relaxed mb-6" style="color: var(--text-color);">Nissy, you are the most beautiful soul I've ever known. Your smile lights up every room, your love for music moves my heart, and your faith is inspiring. The way you see the world with such grace and love is everything to me. In Slumdog Millionaire, they say "it is written" — and I believe it was written that we would find each other.</p>
+      <div class="flex justify-center gap-4 mt-8"><span class="heart-pulse text-3xl" style="color: var(--primary-color);">♡</span> <span class="star text-2xl" style="color: var(--accent-color);">✦</span> <span class="heart-pulse text-3xl" style="color: var(--primary-color); animation-delay: 0.15s;">♡</span>
+      </div>
+     </div>
+    </div>
+   </section><!-- MEMORIES SECTION WITH PHOTO PLACEHOLDERS -->
+   <section class="min-h-screen flex items-center justify-center px-6 py-20 relative fade-section">
+    <div class="max-w-3xl mx-auto w-full">
+     <h2 id="memories-heading" class="grunge-title romantic-title text-3xl md:text-4xl mb-8 text-center" style="color: var(--primary-color);">♡ Moments with You ♡</h2>
+     <div class="heart-divider"><span class="heart" style="color: var(--primary-color);">♡</span> <span class="heart" style="color: var(--accent-color); font-size: 1rem;">✦</span> <span class="heart" style="color: var(--primary-color);">♡</span>
+     </div><!-- EDIT THIS TEXT HERE -->
+     <p id="memories-text" class="handwritten text-lg md:text-xl leading-relaxed text-center mb-12" style="color: var(--text-color);">Five years of us being very close became the foundation for forever. Every moment with you feels like a scene from a beautiful romance. Soon we'll create memories together in person, and I can't wait to hold you close. Until then, know that every day I'm counting down the moments.</p><!-- PHOTO PLACEHOLDER 1 - TO ADD YOUR IMAGE: Replace this entire DIV with: <img src="YOUR_IMAGE_URL" alt="Photo with Nissy" class="w-full h-96 object-cover rounded-lg romantic-border mb-8"> -->
+     <div class="mb-8 rounded-lg overflow-hidden romantic-border" style="width: 100%; height: 350px; background: linear-gradient(135deg, #d4a5c9, #9b7bb8); display: flex; align-items: center; justify-content: center; position: relative;">
+      <div class="text-center">
+       <p class="text-white text-4xl mb-4">📸</p>
+       <p class="text-white text-xl handwritten mb-2">PHOTO 1</p>
+       <p class="text-white opacity-75 text-sm">Replace this with your image</p>
+      </div>
+      <div style="position: absolute; top: 10px; right: 10px; font-size: 2rem; animation: heartbeat 1.5s ease-in-out infinite;">
+       ♡
+      </div>
+     </div><!-- PHOTO PLACEHOLDER 2 - TO ADD YOUR IMAGE: Replace this entire DIV with: <img src="YOUR_IMAGE_URL" alt="Photo with Nissy" class="w-full h-96 object-cover rounded-lg romantic-border"> -->
+     <div class="rounded-lg overflow-hidden romantic-border" style="width: 100%; height: 350px; background: linear-gradient(135deg, #9b7bb8, #7b5e99); display: flex; align-items: center; justify-content: center; position: relative;">
+      <div class="text-center">
+       <p class="text-white text-4xl mb-4">📸</p>
+       <p class="text-white text-xl handwritten mb-2">PHOTO 2</p>
+       <p class="text-white opacity-75 text-sm">Replace this with another image</p>
+      </div>
+      <div style="position: absolute; top: 10px; left: 10px; font-size: 2rem; animation: heartbeat 1.5s ease-in-out infinite; animation-delay: 0.3s;">
+       ♡
+      </div>
+     </div>
+    </div>
+   </section><!-- SLIDESHOW SECTION - GALLERY OF LOVE WITH HEART ANIMATIONS -->
+   <section class="min-h-screen flex items-center justify-center px-6 py-20 relative fade-section">
+    <div class="max-w-2xl mx-auto w-full">
+     <h2 id="slideshow-heading" class="grunge-title romantic-title text-3xl md:text-4xl mb-4 text-center" style="color: var(--primary-color);">♡ Through My Eyes ♡</h2>
+     <p id="slideshow-subtitle" class="handwritten text-lg md:text-xl text-center mb-12 opacity-80" style="color: var(--text-color);">Every moment with you is a treasure I want to hold forever</p><!-- Slideshow Container -->
+     <div class="relative">
+      <!-- Main Slideshow -->
+      <div class="relative rounded-lg overflow-hidden romantic-border" style="width: 100%; height: 500px; background: linear-gradient(135deg, #d4a5c9, #9b7bb8); position: relative;">
+       <!-- Slide Images Container -->
+       <div id="slideshow-container" style="position: relative; width: 100%; height: 100%;">
+        <!-- Slide 1 -->
+        <div class="slideshow-slide" data-slide="0" style="position: absolute; width: 100%; height: 100%; opacity: 1; transition: opacity 0.8s ease-in-out;">
+         <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #d4a5c9, #9b7bb8);">
+          <div class="text-center">
+           <p style="font-size: 4rem; margin-bottom: 1rem;">📸</p>
+           <p class="handwritten text-2xl" style="color: white;">pic1.jpg</p>
+           <p class="text-white opacity-75 text-sm mt-2">Add your portrait here</p>
+          </div>
+         </div>
+        </div><!-- Slide 2 -->
+        <div class="slideshow-slide" data-slide="3" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
+  <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <source src="vid2.mp4" type="video/mp4">
+  </video>
+</div>
+        <!-- Slide 3 -->
+        <div class="slideshow-slide" data-slide="2" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out;">
+         <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #7b5e99, #d4a5c9);">
+          <div class="text-center">
+           <p style="font-size: 4rem; margin-bottom: 1rem;">📸</p>
+           <p class="handwritten text-2xl" style="color: white;">pic3.jpg</p>
+           <p class="text-white opacity-75 text-sm mt-2">Add your portrait here</p>
+          </div>
+         </div>
+        </div><!-- Slide 4 -->
+     <div class="slideshow-slide" data-slide="3" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
+  <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <source src="vid4.mp4" type="video/mp4">
+  </video>
+</div>
+        <!-- Slide 5 -->
+        <div class="slideshow-slide" data-slide="3" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
+  <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <source src="vid5.mp4" type="video/mp4">
+  </video>
+</div><!-- Slide 6 -->
+        <div class="slideshow-slide" data-slide="5" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out;">
+         <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #7b5e99, #9b7bb8);">
+          <div class="text-center">
+           <p style="font-size: 4rem; margin-bottom: 1rem;">📸</p>
+           <p class="handwritten text-2xl" style="color: white;">pic6.jpg</p>
+           <p class="text-white opacity-75 text-sm mt-2">Add your portrait here</p>
+          </div>
+         </div>
+        </div><!-- Slide 7 -->
+        <div class="slideshow-slide" data-slide="6" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out;">
+         <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #d4a5c9, #7b5e99);">
+          <div class="text-center">
+           <p style="font-size: 4rem; margin-bottom: 1rem;">📸</p>
+           <p class="handwritten text-2xl" style="color: white;">pic7.jpg</p>
+           <p class="text-white opacity-75 text-sm mt-2">Add your portrait here</p>
+          </div>
+         </div>
+        </div><!-- Slide 8 -->
+        <div class="slideshow-slide" data-slide="3" style="position:absolute;width:100%;height:100%;opacity:0;transition:opacity 0.8s ease-in-out;">
+  <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <source src="vid8.mp4" type="video/mp4">
+  </video>
+</div><!-- Slide 9 -->
+        <div class="slideshow-slide" data-slide="8" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out;">
+         <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #7b5e99, #d4a5c9);">
+          <div class="text-center">
+           <p style="font-size: 4rem; margin-bottom: 1rem;">📸</p>
+           <p class="handwritten text-2xl" style="color: white;">pic9.jpg</p>
+           <p class="text-white opacity-75 text-sm mt-2">Add your portrait here</p>
+          </div>
+         </div>
+        </div><!-- Slide 10 -->
+        <div class="slideshow-slide" data-slide="9" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out;">
+         <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #d4a5c9, #d4a5c9);">
+          <div class="text-center">
+           <p style="font-size: 4rem; margin-bottom: 1rem;">📸</p>
+           <p class="handwritten text-2xl" style="color: white;">pic10.jpg</p>
+           <p class="text-white opacity-75 text-sm mt-2">Add your portrait here</p>
+          </div>
+         </div>
+        </div>
+       </div><!-- Floating Hearts Around Slideshow -->
+       <div style="position: absolute; top: -20px; left: 20%; font-size: 1.5rem; animation: floatingHearts 3s ease-in infinite;">
+        ♡
+       </div>
+       <div style="position: absolute; top: -15px; right: 15%; font-size: 1.8rem; animation: floatingHearts 3s ease-in infinite; animation-delay: 0.5s;">
+        ♡
+       </div>
+       <div style="position: absolute; bottom: -20px; left: 15%; font-size: 1.6rem; animation: floatingHearts 3s ease-in infinite; animation-delay: 1s;">
+        ♡
+       </div>
+       <div style="position: absolute; bottom: -15px; right: 20%; font-size: 1.7rem; animation: floatingHearts 3s ease-in infinite; animation-delay: 1.5s;">
+        ♡
+       </div><!-- Arrow Buttons --> <button onclick="prevSlide()" class="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 transition-all duration-300 hover:scale-110 focus:outline-none" style="background: rgba(212, 165, 201, 0.8); border: 2px solid #d4a5c9; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.5rem; color: #0d0a12;" onmouseover="this.style.background='rgba(212, 165, 201, 1)'" onmouseout="this.style.background='rgba(212, 165, 201, 0.8)'"> ‹ </button> <button onclick="nextSlide()" class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 transition-all duration-300 hover:scale-110 focus:outline-none" style="background: rgba(212, 165, 201, 0.8); border: 2px solid #d4a5c9; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.5rem; color: #0d0a12;" onmouseover="this.style.background='rgba(212, 165, 201, 1)'" onmouseout="this.style.background='rgba(212, 165, 201, 0.8)'"> › </button>
+      </div><!-- Dots Indicators -->
+      <div class="flex justify-center gap-3 mt-8 flex-wrap">
+       <button onclick="goToSlide(0)" class="dot-indicator transition-all duration-300" data-dot="0" style="width: 12px; height: 12px; border-radius: 50%; background: var(--primary-color); border: 2px solid var(--primary-color); cursor: pointer;"></button> <button onclick="goToSlide(1)" class="dot-indicator transition-all duration-300" data-dot="1" style="width: 12px; height: 12px; border-radius: 50%; background: transparent; border: 2px solid var(--accent-color); cursor: pointer;"></button> <button onclick="goToSlide(2)" class="dot-indicator transition-all duration-300" data-dot="2" style="width: 12px; height: 12px; border-radius: 50%; background: transparent; border: 2px solid var(--accent-color); cursor: pointer;"></button> <button onclick="goToSlide(3)" class="dot-indicator transition-all duration-300" data-dot="3" style="width: 12px; height: 12px; border-radius: 50%; background: transparent; border: 2px solid var(--accent-color); cursor: pointer;"></button> <button onclick="goToSlide(4)" class="dot-indicator transition-all duration-300" data-dot="4" style="width: 12px; height: 12px; border-radius: 50%; background: transparent; border: 2px solid var(--accent-color); cursor: pointer;"></button> <button onclick="goToSlide(5)" class="dot-indicator transition-all duration-300" data-dot="5" style="width: 12px; height: 12px; border-radius: 50%; background: transparent; border: 2px solid var(--accent-color); cursor: pointer;"></button> <button onclick="goToSlide(6)" class="dot-indicator transition-all duration-300" data-dot="6" style="width: 12px; height: 12px; border-radius: 50%; background: transparent; border: 2px solid var(--accent-color); cursor: pointer;"></button> <button onclick="goToSlide(7)" class="dot-indicator transition-all duration-300" data-dot="7" style="width: 12px; height: 12px; border-radius: 50%; background: transparent; border: 2px solid var(--accent-color); cursor: pointer;"></button> <button onclick="goToSlide(8)" class="dot-indicator transition-all duration-300" data-dot="8" style="width: 12px; height: 12px; border-radius: 50%; background: transparent; border: 2px solid var(--accent-color); cursor: pointer;"></button> <button onclick="goToSlide(9)" class="dot-indicator transition-all duration-300" data-dot="9" style="width: 12px; height: 12px; border-radius: 50%; background: transparent; border: 2px solid var(--accent-color); cursor: pointer;"></button>
+      </div><!-- Heart Burst Container (for animations) -->
+      <div id="heart-burst-container" style="position: fixed; pointer-events: none; z-index: 100;"></div>
+     </div>
+    </div>
+   </section><!-- FOREVER SECTION - WRITE YOUR LOVE LETTER HERE!!! -->
+   <section class="min-h-screen flex items-center justify-center px-6 py-20 relative fade-section">
+    <div class="max-w-2xl mx-auto w-full text-center">
+     <h2 id="forever-heading" class="grunge-title romantic-title text-3xl md:text-4xl mb-8" style="color: var(--primary-color);">♡ Forever Yours ♡</h2>
+     <div class="heart-divider"><span class="heart" style="color: var(--primary-color);">♡</span> <span class="heart" style="color: var(--accent-color); font-size: 1rem;">✦</span> <span class="heart" style="color: var(--primary-color);">♡</span>
+     </div>
+     <div class="romantic-border p-8 md:p-12 rounded-lg" style="background: rgba(26, 21, 32, 0.8);"><!-- !!!! EDIT THIS - Write your love letter from your heart here !!!! --> <!-- Replace the text in id="forever-text" below with your own words to Nissy -->
+      <p id="forever-text" class="handwritten text-lg md:text-xl leading-relaxed" style="color: var(--text-color);">Nissy, I love you. I love your passion for God, your appreciation for Indian food (hihi!), the way you love movies, and most of all, the way you love me. Distance is just a temporary chapter in our story. I promise to love you, only you, forever, no matter what. You are my everything.</p>
+      <div class="flex justify-center gap-3 mt-10 flex-wrap"><span class="heart-pulse text-4xl" style="color: var(--primary-color);">♡</span> <span class="star text-3xl" style="color: var(--accent-color);">✦</span> <span class="heart-pulse text-4xl" style="color: var(--primary-color); animation-delay: 0.2s;">♡</span> <span class="star text-3xl" style="color: var(--accent-color); animation-delay: 0.5s;">✦</span> <span class="heart-pulse text-4xl" style="color: var(--primary-color); animation-delay: 0.1s;">♡</span>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-20 text-center relative fade-section">
+    <div class="space-y-6">
+     <p class="handwritten text-2xl" style="color: var(--primary-color);">✧ thank you for dreaming with me ✧</p>
+     <div class="flex justify-center gap-4"><span class="star" style="color: var(--accent-color);">✦</span> <span class="heart-pulse" style="color: var(--primary-color);">♡</span> <span class="star" style="animation-delay: 0.5s; color: var(--accent-color);">✦</span> <span class="heart-pulse" style="animation-delay: 0.25s; color: var(--primary-color);">♡</span> <span class="star" style="animation-delay: 1s; color: var(--accent-color);">✦</span>
+     </div>
+     <p class="text-sm opacity-50 grunge-title" style="color: var(--text-color);">velvet dreams © 2024</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // ============================================
+    // AUDIO SETUP - ADD YOUR SONG LINKS HERE
+    // ============================================
+    // Replace 'PUT_SONG_URL_HERE' with your actual audio file URLs (mp3, wav, etc)
+    const backgroundPlaylist = [
+      'mazzy1.mp3',  // Song 1 (will play automatically in background)
+      'lana1.mp3',  // Song 2 (will play automatically in background)
+      'lana2.mp3',  // Song 3 (will play automatically in background)
+      'mazzy2.mp3'   // Song 4 (will play automatically in background)
+    ];
+    
+    const specialSongUrl = 'jeff1.mp3'; // This plays when user clicks the cassette tape
+    
+    let currentBackgroundAudio = null;
+    let currentPlaylistIndex = 0;
+    let isTapeModalOpen = false;
+    
+    // Slideshow variables
+    let currentSlide = 0;
+    const totalSlides = 10;
+    
+    // ============================================
+    // SLIDESHOW FUNCTIONS WITH HEART ANIMATIONS
+    // ============================================
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlideshow();
+      triggerHeartAnimation();
+    }
+    
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSlideshow();
+      triggerHeartAnimation();
+    }
+    
+    function goToSlide(n) {
+      currentSlide = n;
+      updateSlideshow();
+      triggerHeartAnimation();
+    }
+    
+    function updateSlideshow() {
+      // Update slide visibility
+      document.querySelectorAll('.slideshow-slide').forEach((slide, index) => {
+        slide.style.opacity = index === currentSlide ? '1' : '0';
+      });
+      
+      // Update dot indicators
+      document.querySelectorAll('.dot-indicator').forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.style.background = 'var(--primary-color)';
+          dot.style.transform = 'scale(1.3)';
+        } else {
+          dot.style.background = 'transparent';
+          dot.style.transform = 'scale(1)';
+        }
+      });
+    }
+    
+    // Heart burst animations - multiple styles
+    const heartAnimationStyles = [
+      { tx: 'translate(100px, -100px)', delay: 0 },
+      { tx: 'translate(-100px, -100px)', delay: 0.1 },
+      { tx: 'translate(150px, -80px)', delay: 0.2 },
+      { tx: 'translate(-150px, -120px)', delay: 0.3 },
+      { tx: 'translate(80px, -150px)', delay: 0.05 },
+      { tx: 'translate(-80px, -130px)', delay: 0.15 },
+    ];
+    
+    function triggerHeartAnimation() {
+      const container = document.getElementById('heart-burst-container');
+      const slideshow = document.querySelector('.romantic-border');
+      const rect = slideshow.getBoundingClientRect();
+      
+      heartAnimationStyles.forEach((style, index) => {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.innerHTML = '♡';
+          heart.style.position = 'fixed';
+          heart.style.left = (rect.left + rect.width / 2) + 'px';
+          heart.style.top = (rect.top + rect.height / 2) + 'px';
+          heart.style.fontSize = (20 + Math.random() * 20) + 'px';
+          heart.style.color = 'var(--primary-color)';
+          heart.style.pointerEvents = 'none';
+          heart.style.zIndex = '1000';
+          heart.style.setProperty('--tx', style.tx);
+          heart.style.setProperty('--ty', 'translateY(-200px)');
+          heart.className = 'heart-burst';
+          
+          container.appendChild(heart);
+          
+          // Remove after animation
+          setTimeout(() => heart.remove(), 2000);
+        }, style.delay * 100);
+      });
+    }
+    
+    // Initialize slideshow on load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateSlideshow();
+    });
+    
+    // ============================================
+    // CLICK EASTER EGG - RANDOM LOVE MESSAGES + LOVE METER
+    // ============================================
+    const loveMessages = [
+      'My Baby',
+      'Mwa',
+      'I love you',
+      'Miss you',
+      'My Love',
+      'Beauty',
+      'Princess',
+      'My Angel',
+      'Kiss me',
+      'Mwaa',
+      'Sexy',
+      '❤️',
+      '💕',
+      '😘',
+      '😻',
+      '🫦'
+    ];
+    
+    let loveClickCount = 0;
+    let loveClickTimeout = null;
+    let currentLoveIntensity = 0;
+    
+    function applyLoveEffect(intensity) {
+      const root = document.documentElement;
+      const baseConfig = { ...defaultConfig };
+      
+      // Intensity goes from 0 to 1, now scaled to 15 clicks max
+      const normalizedIntensity = Math.min(intensity / 15, 1);
+      
+      // Interpolate colors toward more pink/magenta
+      const lerpColor = (color1, color2, t) => {
+        const c1 = parseInt(color1.slice(1), 16);
+        const c2 = parseInt(color2.slice(1), 16);
+        const r = Math.round(((c1 >> 16) & 255) * (1 - t) + ((c2 >> 16) & 255) * t);
+        const g = Math.round(((c1 >> 8) & 255) * (1 - t) + ((c2 >> 8) & 255) * t);
+        const b = Math.round(((c1 & 255) * (1 - t) + (c2 & 255) * t));
+        return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
+      };
+      
+      // Colors shift more pink/red at higher intensity - VERY subtle at first
+      const newPrimary = lerpColor(baseConfig.primary_color, '#ff69b4', normalizedIntensity);
+      const newAccent = lerpColor(baseConfig.accent_color, '#ff1493', normalizedIntensity * 0.7);
+      const newBg = lerpColor(baseConfig.background_color, '#2a1a2a', normalizedIntensity * 0.3);
+      
+      root.style.setProperty('--primary-color', newPrimary);
+      root.style.setProperty('--accent-color', newAccent);
+      root.style.setProperty('--bg-color', newBg);
+      document.body.style.background = newBg;
+      
+      // NO blur effect - we're using hearts instead!
+      
+      // Increase opacity of floating elements slowly
+      const floatingIntensity = Math.min(normalizedIntensity * 1.2, 1);
+      document.querySelectorAll('.butterfly').forEach(b => {
+        b.style.opacity = (0.6 + floatingIntensity * 0.3).toString();
+      });
+      document.querySelectorAll('.flower').forEach(f => {
+        f.style.opacity = (0.3 + floatingIntensity * 0.35).toString();
+      });
+      document.querySelectorAll('.sparkle').forEach(s => {
+        s.style.opacity = (0.5 + floatingIntensity * 0.35).toString();
+      });
+      
+      // Increase glow text effect - more subtle until later
+      document.querySelectorAll('.glow-text').forEach(el => {
+        const glowStrength = 10 + normalizedIntensity * 35;
+        el.style.textShadow = `
+          0 0 ${glowStrength}px var(--primary-color),
+          0 0 ${glowStrength * 2}px var(--primary-color),
+          0 0 ${glowStrength * 3}px var(--accent-color)
+        `;
+      });
+      
+      // START ADDING HEARTS TO THE SCREEN THAT FILL IT UP
+      // Hearts start appearing at click 6 (normalizedIntensity > 0.4)
+      if (normalizedIntensity > 0.4) {
+        const heartIntensity = (normalizedIntensity - 0.4) / 0.6; // 0 to 1 from click 6 to 15
+        const container = document.getElementById('heart-burst-container');
+        
+        // Calculate how many hearts should be visible - slightly reduced (0 to 700)
+        const targetHeartCount = Math.floor(Math.pow(heartIntensity, 1.5) * 700);
+        const currentHeartCount = container.querySelectorAll('.filling-heart').length;
+        
+        // Add more hearts if needed
+        if (currentHeartCount < targetHeartCount) {
+          const heartsToAdd = targetHeartCount - currentHeartCount;
+          for (let i = 0; i < heartsToAdd; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'filling-heart';
+            heart.innerHTML = '♡';
+            heart.style.position = 'fixed';
+            heart.style.left = (Math.random() * window.innerWidth) + 'px';
+            heart.style.top = (Math.random() * window.innerHeight) + 'px';
+            heart.style.fontSize = (12 + Math.random() * 40) + 'px';
+            heart.style.color = newPrimary;
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '99';
+            heart.style.opacity = (0.4 + Math.random() * 0.5).toString();
+            heart.style.animation = `heartbeat ${1 + Math.random() * 1.5}s ease-in-out infinite`;
+            heart.style.animationDelay = (Math.random() * 1) + 's';
+            
+            container.appendChild(heart);
+          }
+        }
+      }
+      
+      currentLoveIntensity = normalizedIntensity;
+    }
+    
+    function resetLoveEffect() {
+      const root = document.documentElement;
+      root.style.setProperty('--primary-color', defaultConfig.primary_color);
+      root.style.setProperty('--accent-color', defaultConfig.accent_color);
+      root.style.setProperty('--bg-color', defaultConfig.background_color);
+      document.body.style.background = defaultConfig.background_color;
+      document.getElementById('main-wrapper').style.filter = 'blur(0px)';
+      
+      document.querySelectorAll('.butterfly').forEach(b => {
+        b.style.opacity = '0.6';
+      });
+      document.querySelectorAll('.flower').forEach(f => {
+        f.style.opacity = '0.3';
+      });
+      document.querySelectorAll('.sparkle').forEach(s => {
+        s.style.opacity = '0.5';
+      });
+      
+      document.querySelectorAll('.glow-text').forEach(el => {
+        el.style.textShadow = `
+          0 0 10px var(--primary-color),
+          0 0 20px var(--primary-color),
+          0 0 30px var(--accent-color)
+        `;
+      });
+      
+      // Fade out all filling hearts instead of removing instantly
+      document.querySelectorAll('.filling-heart').forEach(heart => {
+        heart.style.transition = 'opacity 0.8s ease-out';
+        heart.style.opacity = '0';
+        setTimeout(() => heart.remove(), 800);
+      });
+      
+      loveClickCount = 0;
+      currentLoveIntensity = 0;
+      
+      // Clear timeout so it doesn't trigger reset after explosion
+      if (loveClickTimeout) {
+        clearTimeout(loveClickTimeout);
+        loveClickTimeout = null;
+      }
+    }
+    
+    function triggerLoveExplosion() {
+      const container = document.getElementById('heart-burst-container');
+      if (!container) return;
+      
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      
+      // Phase 1: 100 BIG hearts burst outward instantly (doubled size & quantity)
+      for (let i = 0; i < 100; i++) {
+        const heart = document.createElement('div');
+        heart.innerHTML = '♡';
+        heart.style.position = 'fixed';
+        heart.style.left = centerX + 'px';
+        heart.style.top = centerY + 'px';
+        heart.style.fontSize = (50 + Math.random() * 60) + 'px';
+        heart.style.color = '#d4a5c9';
+        heart.style.pointerEvents = 'none';
+        heart.style.zIndex = '10000';
+        heart.style.opacity = '1';
+        heart.style.transform = 'translate(-50%, -50%)';
+        
+        const angle = (i / 100) * Math.PI * 2;
+        const distance = 400 + Math.random() * 250;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+        
+        heart.style.setProperty('--burst-x', `${tx}px`);
+        heart.style.setProperty('--burst-y', `${ty}px`);
+        heart.className = 'explosion-heart';
+        
+        container.appendChild(heart);
+      }
+      
+      // Phase 2: 200 tiny hearts rain down from top (doubled quantity, multiple columns)
+      setTimeout(() => {
+        for (let i = 0; i < 200; i++) {
+          const heart = document.createElement('div');
+          heart.innerHTML = '♡';
+          heart.style.position = 'fixed';
+          heart.style.left = (Math.random() * window.innerWidth) + 'px';
+          heart.style.top = '-100px';
+          heart.style.fontSize = (8 + Math.random() * 16) + 'px';
+          heart.style.color = '#d4a5c9';
+          heart.style.pointerEvents = 'none';
+          heart.style.zIndex = '10001';
+          heart.style.opacity = '0.9';
+          heart.style.setProperty('--rain-x', (Math.random() * 120 - 60) + 'px');
+          heart.className = 'rain-heart';
+          
+          container.appendChild(heart);
+        }
+      }, 800);
+      
+      // Phase 3: After 2.5 seconds, start fading out all hearts (explosion + filling)
+      setTimeout(() => {
+        // Fade out all hearts smoothly
+        const allHearts = container.querySelectorAll('div');
+        allHearts.forEach(heart => {
+          heart.style.transition = 'opacity 1s ease-out';
+          heart.style.opacity = '0';
+        });
+        
+        // After fade completes, reset everything
+        setTimeout(() => {
+          container.innerHTML = '';
+          resetLoveEffect();
+          loveClickCount = 0;
+          isAnimating = false;
+        }, 1000);
+      }, 2500);
+    }
+    
+    let isAnimating = false;
+    
+    const loveClickHandler = (e) => {
+      // Don't trigger on interactive elements
+      const clickedElement = e.target;
+      const isInteractive = 
+        clickedElement.tagName === 'BUTTON' ||
+        clickedElement.tagName === 'A' ||
+        clickedElement.classList.contains('dot-indicator') ||
+        clickedElement.id === 'vinyl-record' ||
+        clickedElement.id === 'cassette' ||
+        clickedElement.closest('button') ||
+        clickedElement.closest('a');
+      
+      if (isInteractive || isAnimating) return;
+      
+      // Clear existing timeout - we don't want automatic reset anymore
+      if (loveClickTimeout) {
+        clearTimeout(loveClickTimeout);
+        loveClickTimeout = null;
+      }
+      
+      // Increment click count
+      loveClickCount++;
+      
+      // Check if hit 15 clicks - trigger explosion!
+      if (loveClickCount >= 15) {
+        isAnimating = true;
+        triggerLoveExplosion();
+        return;
+      }
+      
+      // Apply love effect based on count
+      applyLoveEffect(loveClickCount);
+      
+      // Random message from the pool
+      const randomMessage = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+      
+      // Increase font size with intensity - scales up as clicks increase
+      const baseFontSize = 14 + loveClickCount * 2;
+      
+      // Create the floating message element
+      const messageEl = document.createElement('div');
+      messageEl.innerHTML = randomMessage;
+      messageEl.style.position = 'fixed';
+      messageEl.style.left = (e.clientX - 20) + 'px';
+      messageEl.style.top = (e.clientY - 20) + 'px';
+      messageEl.style.fontFamily = '\'Homemade Apple\', cursive';
+      messageEl.style.fontSize = (baseFontSize + Math.random() * 8) + 'px';
+      messageEl.style.color = 'var(--primary-color)';
+      messageEl.style.pointerEvents = 'none';
+      messageEl.style.zIndex = '999';
+      messageEl.style.whiteSpace = 'nowrap';
+      messageEl.style.textShadow = `
+        0 0 10px var(--primary-color),
+        0 0 20px var(--primary-color),
+        0 0 30px var(--accent-color)
+      `;
+      messageEl.style.animation = 'floatUpAndFade 2s ease-out forwards';
+      messageEl.style.fontWeight = 'bold';
+      
+      // Add slight randomness to direction
+      const randomX = (Math.random() - 0.5) * 40;
+      const randomY = (Math.random() - 0.5) * 40;
+      messageEl.style.setProperty('--randomX', randomX + 'px');
+      messageEl.style.setProperty('--randomY', randomY + 'px');
+      
+      document.body.appendChild(messageEl);
+      
+      // Remove after animation
+      setTimeout(() => messageEl.remove(), 2000);
+    };
+    
+    document.addEventListener('click', loveClickHandler, true); // Use capture phase to catch clicks before bubbling
+    
+    // ============================================
+    // Default configuration
+    const defaultConfig = {
+      background_color: '#0d0a12',
+      surface_color: '#1a1520',
+      text_color: '#e8ddf0',
+      primary_color: '#d4a5c9',
+      accent_color: '#9b7bb8',
+      font_family: 'Playfair Display',
+      font_size: 16,
+      hero_title: 'You Are My Everything, Nissy',
+      hero_subtitle: 'I love you, only you, forever, no matter what ♡',
+      about_her_heading: '✧ About Her ✧',
+      about_her_text: 'Nissy, you are the most beautiful soul I\'ve ever known. Your smile lights up every room, your love for music moves my heart, and your faith is inspiring. The way you see the world with such grace and love is everything to me. In Slumdog Millionaire, they say "it is written" — and I believe it was written that we would find each other.',
+      memories_heading: '♡ Moments with You ♡',
+      memories_text: 'Five years of us being very close became the foundation for forever. Every moment with you feels like a scene from a beautiful romance. Soon we\'ll create memories together in person, and I can\'t wait to hold you close. Until then, know that every day I\'m counting down the moments.',
+      slideshow_heading: '♡ Through My Eyes ♡',
+      slideshow_subtitle: 'Every moment with you is a treasure I want to hold forever',
+      forever_heading: '♡ Forever Yours ♡',
+      forever_text: 'Nissy, I love you. I love your passion for God, your appreciation for Indian food (hihi!), the way you love movies, and most of all, the way you love me. Distance is just a temporary chapter in our story. I promise to love you, only you, forever, no matter what. You are my everything.',
+      quote_text: '"I want to hold the hand inside you, I want to take a breath that\'s true"'
+    };
+    
+    let isVinylPlaying = false;
+    let isTapePlaying = false;
+    
+    function toggleVinyl() {
+      const vinyl = document.getElementById('vinyl-record');
+      const playText = document.getElementById('play-text');
+      isVinylPlaying = !isVinylPlaying;
+      
+      if (isVinylPlaying) {
+        vinyl.classList.add('playing');
+        playText.textContent = 'click to pause';
+      } else {
+        vinyl.classList.remove('playing');
+        playText.textContent = 'click to play';
+      }
+    }
+    
+    function toggleTape() {
+      const reels = document.querySelectorAll('.tape-reel');
+      const tapeText = document.getElementById('tape-text');
+      isTapePlaying = !isTapePlaying;
+      
+      if (isTapePlaying) {
+        // Stop background music and play special song
+        if (currentBackgroundAudio) {
+          currentBackgroundAudio.pause();
+          currentBackgroundAudio = null;
+        }
+        
+        // Play the special cassette song
+        const audio = new Audio(specialSongUrl);
+        audio.play().catch(err => {
+          console.error('Could not play tape song:', err);
+          isTapePlaying = false;
+          tapeText.textContent = 'click to play';
+        });
+        
+        audio.onended = () => {
+          isTapePlaying = false;
+          tapeText.textContent = 'click to play';
+          reels.forEach(reel => reel.classList.remove('playing'));
+          // Resume background music
+          playNextBackgroundSong();
+        };
+        
+        reels.forEach(reel => reel.classList.add('playing'));
+        tapeText.textContent = 'click to pause';
+      } else {
+        reels.forEach(reel => reel.classList.remove('playing'));
+        tapeText.textContent = 'click to play';
+        // Resume background music
+        playNextBackgroundSong();
+      }
+    }
+    
+    // ============================================
+    // BACKGROUND MUSIC AUTO-CYCLING
+    // ============================================
+    function playNextBackgroundSong() {
+      if (currentPlaylistIndex >= backgroundPlaylist.length) {
+        currentPlaylistIndex = 0;
+      }
+      
+      const songUrl = backgroundPlaylist[currentPlaylistIndex];
+      
+      if (!songUrl || songUrl.includes('PUT_SONG')) {
+        // Skip if placeholder - just move to next
+        currentPlaylistIndex++;
+        setTimeout(playNextBackgroundSong, 1000);
+        return;
+      }
+      
+      currentBackgroundAudio = new Audio(songUrl);
+      currentBackgroundAudio.volume = 0.3; // Background volume (lower than cassette)
+      
+      currentBackgroundAudio.play().catch(err => {
+        console.error('Could not play background song:', err);
+        // Try next song
+        currentPlaylistIndex++;
+        setTimeout(playNextBackgroundSong, 1000);
+      });
+      
+      currentBackgroundAudio.onended = () => {
+        currentPlaylistIndex++;
+        playNextBackgroundSong();
+      };
+    }
+    
+    // Start background music when page loads
+    window.addEventListener('load', () => {
+      setTimeout(playNextBackgroundSong, 1000);
+    });
+    
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.fade-section').forEach(section => {
+      observer.observe(section);
+    });
+    
+    // Apply configuration to the page
+    async function onConfigChange(config) {
+      const root = document.documentElement;
+      const c = { ...defaultConfig, ...config };
+      
+      // Update CSS variables
+      root.style.setProperty('--bg-color', c.background_color);
+      root.style.setProperty('--surface-color', c.surface_color);
+      root.style.setProperty('--text-color', c.text_color);
+      root.style.setProperty('--primary-color', c.primary_color);
+      root.style.setProperty('--accent-color', c.accent_color);
+      
+      // Update body styles
+      document.body.style.background = c.background_color;
+      document.body.style.color = c.text_color;
+      document.body.style.fontFamily = `${c.font_family}, Playfair Display, serif`;
+      
+      // Update font sizes proportionally
+      const baseSize = c.font_size;
+      document.querySelectorAll('.grunge-title').forEach(el => {
+        if (el.classList.contains('text-5xl') || el.classList.contains('text-7xl') || el.classList.contains('text-8xl')) {
+          el.style.fontSize = `${baseSize * 4}px`;
+        } else if (el.classList.contains('text-3xl') || el.classList.contains('text-4xl')) {
+          el.style.fontSize = `${baseSize * 2}px`;
+        } else {
+          el.style.fontSize = `${baseSize * 1.25}px`;
+        }
+      });
+      
+      document.querySelectorAll('.handwritten').forEach(el => {
+        el.style.fontSize = `${baseSize * 1.25}px`;
+      });
+      
+      // Update text content
+      const heroTitle = document.getElementById('hero-title');
+      const heroSubtitle = document.getElementById('hero-subtitle');
+      const aboutHerHeading = document.getElementById('about-her-heading');
+      const aboutHerText = document.getElementById('about-her-text');
+      const memoriesHeading = document.getElementById('memories-heading');
+      const memoriesText = document.getElementById('memories-text');
+      const foreverHeading = document.getElementById('forever-heading');
+      const foreverText = document.getElementById('forever-text');
+      const quoteText = document.getElementById('quote-text');
+      
+      if (heroTitle) heroTitle.textContent = c.hero_title;
+      if (heroSubtitle) heroSubtitle.textContent = c.hero_subtitle;
+      if (aboutHerHeading) aboutHerHeading.textContent = c.about_her_heading;
+      if (aboutHerText) aboutHerText.textContent = c.about_her_text;
+      if (memoriesHeading) memoriesHeading.textContent = c.memories_heading;
+      if (memoriesText) memoriesText.textContent = c.memories_text;
+      if (foreverHeading) foreverHeading.textContent = c.forever_heading;
+      if (foreverText) foreverText.textContent = c.forever_text;
+      if (quoteText) quoteText.textContent = c.quote_text;
+      
+      // Update slideshow text
+      const slideshowHeading = document.getElementById('slideshow-heading');
+      const slideshowSubtitle = document.getElementById('slideshow-subtitle');
+      if (slideshowHeading) slideshowHeading.textContent = c.slideshow_heading;
+      if (slideshowSubtitle) slideshowSubtitle.textContent = c.slideshow_subtitle;
+      
+      // Update gradient blobs
+      document.querySelectorAll('.dreamy-blur').forEach((blob, i) => {
+        if (i === 0) blob.style.background = c.primary_color;
+        else if (i === 1) blob.style.background = c.accent_color;
+        else blob.style.background = c.accent_color;
+      });
+    }
+    
+    // Map to capabilities for SDK
+    function mapToCapabilities(config) {
+      const c = { ...defaultConfig, ...config };
+      
+      return {
+        recolorables: [
+          {
+            get: () => c.background_color,
+            set: (value) => { c.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+          },
+          {
+            get: () => c.surface_color,
+            set: (value) => { c.surface_color = value; window.elementSdk.setConfig({ surface_color: value }); }
+          },
+          {
+            get: () => c.text_color,
+            set: (value) => { c.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          },
+          {
+            get: () => c.primary_color,
+            set: (value) => { c.primary_color = value; window.elementSdk.setConfig({ primary_color: value }); }
+          },
+          {
+            get: () => c.accent_color,
+            set: (value) => { c.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => c.font_family,
+          set: (value) => { c.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+        },
+        fontSizeable: {
+          get: () => c.font_size,
+          set: (value) => { c.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+        }
+      };
+    }
+    
+    // Map to edit panel values
+    function mapToEditPanelValues(config) {
+      const c = { ...defaultConfig, ...config };
+      return new Map([
+        ['hero_title', c.hero_title],
+        ['hero_subtitle', c.hero_subtitle],
+        ['about_her_heading', c.about_her_heading],
+        ['about_her_text', c.about_her_text],
+        ['memories_heading', c.memories_heading],
+        ['memories_text', c.memories_text],
+        ['slideshow_heading', c.slideshow_heading],
+        ['slideshow_subtitle', c.slideshow_subtitle],
+        ['forever_heading', c.forever_heading],
+        ['forever_text', c.forever_text],
+        ['quote_text', c.quote_text]
+      ]);
+    }
+    
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    } else {
+      onConfigChange(defaultConfig);
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d93119da1b8ec1a',t:'MTc3Mjk4NTc5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
